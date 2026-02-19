@@ -75,10 +75,8 @@ Please refer the following codebase architecture diagram to focus on the modules
 ### System Architecture
 Please refer the following implementation architecture to understand various system stages to process the data, extract features, train on those features and build and evaluate models.
 
-```
-!AWS Architecture Rendition (Diagrams/pfize_case_study_system_architecture.svg)
 
-```
+![AWS Architecture Rendition](.venv/Diagrams\pfizer_case_study_system_architecture.jpg)
 
 
 <!-- DEEP DIVE -->
@@ -103,3 +101,5 @@ Please refer the following implementation architecture to understand various sys
         |----requirements.txt
 
 ```
+
+[def]: Diagrams\pfizer_case_study_system_architecture.png
