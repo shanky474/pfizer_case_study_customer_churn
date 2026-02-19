@@ -27,14 +27,27 @@ Curated codebase to build a model to predict customer churn based on customer de
 
 
 
-<!-- ABOUT THE PROJECT -->
-## Codebase Architecture
+<!-- PROJECT STRUCTURE -->
+## Architecture
 
-Please refer the following architecture diagram to focus on the processes implementation above
+### Codebase Architecture
+Please refer the following codebase architecture diagram to focus on the modules/files to implement the project
 
 ```
-----.venv
+|----.venv
+       |----Lib\site-packages
+                            |----utils
+                                     |----PreProcessingClassificationChurn.py
+                                     |----FeatureExtractionClassificationChurn.py
+                                     |----MLTrainingClassificationChurn.py
+                                     |----MLClassificationInference.py
+                                     |----models.py
        |----Scripts
+                |----requirements.txt
+                |----requirements.txt
+                |----artifacts
+                            |----XGB_model_2026-02-16_20_22_20.987057.joblib
+                            |----XGB_model_2026-02-16_20_23_45.338177.joblib
                 |----notebooks
                             |----Customer_Churn_EDA.ipynb
                             |----ML_Modelling.ipynb
@@ -53,6 +66,40 @@ Please refer the following architecture diagram to focus on the processes implem
                                 |----Telco-Customer-Churn-encoded.csv
                         |----features
                                 |----Telco-Customer-Churn-Features.csv
-                        
+                        |----features
+                                |----Telco-Customer-Churn-Predictions.csv
+                        |----data.json                        
+
+```
+
+### System Architecture
+Please refer the following implementation architecture to understand various system stages to process the data, extract features, train on those features and build and evaluate models.
+
+```
+![Alt text for the diagram](.venv/Diagrams/pfize_case_study_system_architecture.svg)
+
+```
+
+
+<!-- DEEP DIVE -->
+# Detailed Illustration
+
+1. Notebooks `Customer_Churn_EDA.ipynb`, `ML_Modelling.ipynb` are used to perform analysis on preprocessing, EDA, Feature Extraction, Feature Engineering, ML Model Development for exploration purposes.
+
+2. Based on the above findings `training_pipeline.py` trains the selected model incrementally and stores the artifacts.
+
+3. Post training `inference_pipeline.py` performs batch inference on the latest model in artifacts by sourcing batched data `data.json`
+
+4. Real-time predictions are done by FASTAPI based framework invoked by `main.py`. (Run command `uvicorn main:app --reload`. Remove --reload for production deployment) 
+
+4. Model and inference scripts are packaged into a docker container. Copy files/directories `main.py`, `artifacts`, `utils` and generate `Dockerfile` into the following folder structure. 
+
+```
+|----docker
+        |----artifacts
+        |----utils
+        |----Dockerfile
+        |----main.py
+        |----requirements.txt
 
 ```
