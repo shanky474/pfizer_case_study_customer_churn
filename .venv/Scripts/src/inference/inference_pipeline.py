@@ -27,7 +27,7 @@ inference.preprocess_data(inference_data,['Churn'],['gender',
 
 predictions = inference.predict({1:"Yes",0:"No"})
 
-print(predictions)
+predictions.to_csv(r'.venv\Scripts\data\predictions\Telco-Customer-Churn-Predictions.csv',index=False)
 # if __name__ == "__main__":
 #     # Load model and preprocessor once
 #     # model, preprocessor = load_artifact()

@@ -1,0 +1,13 @@
+joblib==1.5.3
+matplotlib==3.9.4
+numpy==2.0.2
+pandas==2.3.3
+DateTime==5.5
+scikit-learn==1.6.1
+seaborn==0.13.2
+xgboost==2.1.4
+lightgbm==4.6.0
+pyaml==26.2.1
+fastapi==0.129.0
+pydantic==2.12.5
+uvicorn==0.40.0
